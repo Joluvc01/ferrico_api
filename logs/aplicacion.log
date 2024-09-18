@@ -1,0 +1,149 @@
+2024-09-17 21:58:01 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Starting FerricoApiApplication using Java 17.0.12 with PID 197679 (/home/joluvc01/IdeaProjects/ferrico_api/target/classes started by joluvc01 in /home/joluvc01/IdeaProjects/ferrico_api)
+2024-09-17 21:58:01 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8088 (http)
+2024-09-17 21:58:01 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-17 21:58:01 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17 21:58:01 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-09-17 21:58:01 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 701 ms
+2024-09-17 21:58:01 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17 21:58:01 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-17 21:58:01 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-17 21:58:02 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17 21:58:02 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-09-17 21:58:02 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e3d20b3
+2024-09-17 21:58:02 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-09-17 21:58:02 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-17 21:58:02 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-17 21:58:02 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table category (id bigint not null auto_increment, active bit not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table customer (id bigint not null auto_increment, dni varchar(255) not null, email varchar(255) not null, lastname varchar(255) not null, name varchar(255) not null, phone varchar(255) not null, ruc varchar(255), primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table product (id bigint not null auto_increment, active bit not null, description varchar(255) not null, name varchar(255) not null, price float(53) not null, category_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table product_store (id bigint not null auto_increment, quantity integer not null, product_id bigint, store_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table purchase (id bigint not null auto_increment, date date not null, hora time(6) not null, igv float(53), status bit, subtotal float(53), total float(53), customer_id bigint, store_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table purchase_detail (id bigint not null auto_increment, quantity integer not null, total float(53), product_id bigint, purchase_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table role (id bigint not null auto_increment, active bit not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table store (id bigint not null auto_increment, active bit not null, address varchar(255) not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - create table user (id bigint not null auto_increment, active bit not null, lastname varchar(255) not null, name varchar(255) not null, password varchar(255) not null, username varchar(255) not null, role_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table category drop index UK46ccwnsi9409t36lurvtyljak
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table category add constraint UK46ccwnsi9409t36lurvtyljak unique (name)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table product add constraint FK1mtsbur82frn64de7balymq9s foreign key (category_id) references category (id)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table product_store add constraint FK5ixdrvrn9b8v6gwrws3s3brsf foreign key (product_id) references product (id)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table product_store add constraint FK6ofo19q4q8aqicf2tifxv91et foreign key (store_id) references store (id)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase add constraint FK2pehe23hwdcyql94c531rbf70 foreign key (customer_id) references customer (id)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase add constraint FKnpwpf88wcu690jwm2xho10ug4 foreign key (store_id) references store (id)
+2024-09-17 21:58:02 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase_detail add constraint FK79a6tsn4e9qfillme2u9kr3i2 foreign key (product_id) references product (id)
+2024-09-17 21:58:03 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase_detail add constraint FK65hoe4yy1817l2vm74msb8eq5 foreign key (purchase_id) references purchase (id)
+2024-09-17 21:58:03 [restartedMain] DEBUG org.hibernate.SQL - alter table user add constraint FKn82ha3ccdebhokx3a8fgdqeyy foreign key (role_id) references role (id)
+2024-09-17 21:58:03 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 21:58:03 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-17 21:58:03 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-09-17 21:58:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8088 (http) with context path '/'
+2024-09-17 21:58:03 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Started FerricoApiApplication in 2.433 seconds (process running for 2.844)
+2024-09-17 21:58:14 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 20 class path changes (0 additions, 19 deletions, 1 modification)
+2024-09-17 21:58:14 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 21:58:14 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-09-17 21:58:14 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-09-17 21:58:14 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Starting FerricoApiApplication using Java 17.0.12 with PID 197679 (/home/joluvc01/IdeaProjects/ferrico_api/target/classes started by joluvc01 in /home/joluvc01/IdeaProjects/ferrico_api)
+2024-09-17 21:58:14 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-17 21:58:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17 21:58:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2024-09-17 21:58:14 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8088 (http)
+2024-09-17 21:58:14 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-17 21:58:14 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17 21:58:14 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-09-17 21:58:14 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 211 ms
+2024-09-17 21:58:15 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17 21:58:15 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-17 21:58:15 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17 21:58:15 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-09-17 21:58:15 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a2fe770
+2024-09-17 21:58:15 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-09-17 21:58:15 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-17 21:58:15 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-17 21:58:15 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17 21:58:15 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 21:58:15 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-17 21:58:15 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-09-17 21:58:15 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8088 (http) with context path '/'
+2024-09-17 21:58:15 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Started FerricoApiApplication in 0.645 seconds (process running for 14.933)
+2024-09-17 21:58:15 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-09-17 21:58:16 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 19 class path changes (19 additions, 0 deletions, 0 modifications)
+2024-09-17 21:58:16 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 21:58:16 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-09-17 21:58:16 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-09-17 21:58:16 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Starting FerricoApiApplication using Java 17.0.12 with PID 197679 (/home/joluvc01/IdeaProjects/ferrico_api/target/classes started by joluvc01 in /home/joluvc01/IdeaProjects/ferrico_api)
+2024-09-17 21:58:16 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-17 21:58:16 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17 21:58:16 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8088 (http)
+2024-09-17 21:58:17 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-17 21:58:17 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17 21:58:17 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 182 ms
+2024-09-17 21:58:17 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17 21:58:17 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17 21:58:17 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-09-17 21:58:17 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28db324e
+2024-09-17 21:58:17 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-09-17 21:58:17 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-17 21:58:17 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-17 21:58:17 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 21:58:17 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8088 (http) with context path '/'
+2024-09-17 21:58:17 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Started FerricoApiApplication in 0.447 seconds (process running for 16.816)
+2024-09-17 21:58:17 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-09-17 22:05:37 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 22:05:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-09-17 22:05:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2024-09-17 22:05:38 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Starting FerricoApiApplication using Java 17.0.12 with PID 207568 (/home/joluvc01/IdeaProjects/ferrico_api/target/classes started by joluvc01 in /home/joluvc01/IdeaProjects/ferrico_api)
+2024-09-17 22:05:38 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8088 (http)
+2024-09-17 22:05:38 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-17 22:05:38 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17 22:05:38 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-09-17 22:05:38 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 617 ms
+2024-09-17 22:05:39 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17 22:05:39 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-17 22:05:39 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-17 22:05:39 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17 22:05:39 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-09-17 22:05:39 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@487b2e5e
+2024-09-17 22:05:39 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-09-17 22:05:39 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-17 22:05:39 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-17 22:05:39 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table category (id bigint not null auto_increment, active bit not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table customer (id bigint not null auto_increment, dni varchar(255) not null, email varchar(255) not null, lastname varchar(255) not null, name varchar(255) not null, phone varchar(255) not null, ruc varchar(255), primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table product (id bigint not null auto_increment, active bit not null, description varchar(255) not null, name varchar(255) not null, price float(53) not null, category_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table product_store (id bigint not null auto_increment, quantity integer not null, product_id bigint, store_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table purchase (id bigint not null auto_increment, date date not null, hora time(6) not null, igv float(53), status bit, subtotal float(53), total float(53), customer_id bigint, store_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table purchase_detail (id bigint not null auto_increment, quantity integer not null, total float(53), product_id bigint, purchase_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table role (id bigint not null auto_increment, active bit not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table store (id bigint not null auto_increment, active bit not null, address varchar(255) not null, name varchar(255) not null, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - create table user (id bigint not null auto_increment, active bit not null, lastname varchar(255) not null, name varchar(255) not null, password varchar(255) not null, username varchar(255) not null, role_id bigint, primary key (id)) engine=InnoDB
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - alter table category drop index UK46ccwnsi9409t36lurvtyljak
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - alter table category add constraint UK46ccwnsi9409t36lurvtyljak unique (name)
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - alter table product add constraint FK1mtsbur82frn64de7balymq9s foreign key (category_id) references category (id)
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - alter table product_store add constraint FK5ixdrvrn9b8v6gwrws3s3brsf foreign key (product_id) references product (id)
+2024-09-17 22:05:39 [restartedMain] DEBUG org.hibernate.SQL - alter table product_store add constraint FK6ofo19q4q8aqicf2tifxv91et foreign key (store_id) references store (id)
+2024-09-17 22:05:40 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase add constraint FK2pehe23hwdcyql94c531rbf70 foreign key (customer_id) references customer (id)
+2024-09-17 22:05:40 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase add constraint FKnpwpf88wcu690jwm2xho10ug4 foreign key (store_id) references store (id)
+2024-09-17 22:05:40 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase_detail add constraint FK79a6tsn4e9qfillme2u9kr3i2 foreign key (product_id) references product (id)
+2024-09-17 22:05:40 [restartedMain] DEBUG org.hibernate.SQL - alter table purchase_detail add constraint FK65hoe4yy1817l2vm74msb8eq5 foreign key (purchase_id) references purchase (id)
+2024-09-17 22:05:40 [restartedMain] DEBUG org.hibernate.SQL - alter table user add constraint FKn82ha3ccdebhokx3a8fgdqeyy foreign key (role_id) references role (id)
+2024-09-17 22:05:40 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17 22:05:40 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-17 22:05:40 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-09-17 22:05:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8088 (http) with context path '/'
+2024-09-17 22:05:40 [restartedMain] INFO  r.ferrico_api.FerricoApiApplication - Started FerricoApiApplication in 2.288 seconds (process running for 2.577)
