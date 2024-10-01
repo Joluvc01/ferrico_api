@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import rest.ferrico_api.dto.RegisterDTO;
 import rest.ferrico_api.dto.UserDTO;
 import rest.ferrico_api.entity.Role;
 import rest.ferrico_api.entity.User;
@@ -47,21 +48,21 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> create(@RequestBody UserDTO userDTO) {
-        Optional<User> existingUser = userService.findByUsername(userDTO.getUsername());
+    public ResponseEntity<?> create(@RequestBody RegisterDTO registerDTO) {
+        Optional<User> existingUser = userService.findByUsername(registerDTO.getUsername());
 
         if (existingUser.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El nombre de usuario ya está en uso");
         }
 
         User newuser = new User();
-        newuser.setUsername(userDTO.getUsername());
-        newuser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        newuser.setName(userDTO.getName());
-        newuser.setLastname(userDTO.getLastname());
+        newuser.setUsername(registerDTO.getUsername());
+        newuser.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
+        newuser.setName(registerDTO.getName());
+        newuser.setLastname(registerDTO.getLastname());
         newuser.setActive(true);
 
-        Optional<Role> role = roleService.findByName(userDTO.getRole());
+        Optional<Role> role = roleService.findById(registerDTO.getRole());
         if (role.isPresent()) {
             newuser.setRole(role.get());
         } else {
@@ -69,7 +70,7 @@ public class UserController {
         }
 
         User savedUser = userService.save(newuser);
-        return ResponseEntity.status(HttpStatus.CREATED).body(convertDTO.convertToUserDTO(savedUser));
+        return ResponseEntity.status(HttpStatus.CREATED).body(convertDTO.convertToRegisterDTO(savedUser));
     }
 
     @PutMapping("/{id}")
@@ -83,7 +84,7 @@ public class UserController {
             existingUser.setName(userDTO.getName());
             existingUser.setLastname(userDTO.getLastname());
 
-            Optional<Role> role = roleService.findByName(userDTO.getRole());
+            Optional<Role> role = roleService.findById(userDTO.getRole());
             if (role.isPresent()) {
                 existingUser.setRole(role.get());
             } else {

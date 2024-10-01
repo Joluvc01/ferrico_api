@@ -9,11 +9,12 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UserDTO implements Serializable {
+public class RegisterDTO implements Serializable {
 
     public String name;
     public String lastname;
     public String username;
+    public String password;
     public Boolean active;
     public Long role;
 }
